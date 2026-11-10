@@ -63,6 +63,14 @@ fun CanvasScreen(modifier: Modifier = Modifier) {
             delay(1L)
             minionOffsetX += 1
             minionOffsetY += 1
+            if (CanvasWidth > 0f && CanvasHeight > 0f) {
+                // 這裡的判斷是：只要 X 碰到底 或 Y 碰到底，就重新開始
+                // 你也可以加上圖片的寬度 (minionOffsetX + minionsImage.width > CanvasWidth) 讓它碰到邊緣就提早重置
+                if (minionOffsetX > CanvasWidth || minionOffsetY > CanvasHeight) {
+                    minionOffsetX = 0f
+                    minionOffsetY = 0f
+                }
+            }
 
         }
     }
